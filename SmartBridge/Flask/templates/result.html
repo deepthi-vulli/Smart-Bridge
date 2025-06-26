@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Prediction Result</title>
+    <style>
+        body {
+            background-image: url('car.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .card {
+            background-color: rgba(255, 255, 255, 0.95);
+            padding: 40px;
+            max-width: 500px;
+            margin: 100px auto;
+            text-align: center;
+            border-radius: 15px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.4);
+        }
+
+        .card h2 {
+            font-size: 28px;
+            color: #333;
+        }
+
+        .card p {
+            font-size: 24px;
+            color: #007bff;
+            margin-top: 20px;
+            font-weight: bold;
+        }
+
+        .back-button {
+            margin-top: 30px;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .back-button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+<div class="card">
+    <h2>Traffic Volume Prediction Result</h2>
+    <p id="resultText">Loading...</p>
+    <button class="back-button" onclick="goBack()">Back to Form</button>
+</div>
+
+<script>
+    const prediction = localStorage.getItem("prediction");
+    document.getElementById("resultText").textContent =
+        prediction ? `Predicted Traffic Volume: ${prediction} vehicles per hour` : "No prediction found!";
+
+    function goBack() {
+        window.location.href = "index.html";
+    }
+</script>
+
+</body>
+</html>

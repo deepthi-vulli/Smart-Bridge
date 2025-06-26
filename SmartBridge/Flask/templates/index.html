@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Traffic Volume Estimation</title>
+    <style>
+        body {
+            background-image: url('car.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            font-family: Arial, sans-serif;
+            color: black;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .login {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.3);
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: inline-block;
+            width: 100px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        input, select {
+            padding: 8px;
+            margin: 5px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+
+        input[type="number"] {
+            width: 200px;
+        }
+
+        select {
+            width: 216px;
+        }
+
+        button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            display: block;
+            margin: 20px auto;
+            padding: 10px 20px;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        br {
+            line-height: 1.5;
+        }
+    </style>
+</head>
+
+<body>
+<div class="login">
+    <center><h1>Traffic Volume Estimation</h1></center>
+
+    <form onsubmit="handlePredict(event)" method="post">
+        <h1>Please enter the following details:</h1>
+
+        <label for="holiday">Holiday:</label>
+        <select id="holiday" name="holiday">
+            <option value=2>None</option>
+            <option value=1>Columbus Day</option>
+            <option value=10>Veterans Day</option>
+            <option value=9>Thanksgiving Day</option>
+            <option value=5>New Years Day</option>
+            <option value=11>Washingtons Birthday</option>
+            <option value=5>Memorial Day</option>
+            <option value=2>Independence Day</option>
+            <option value=8>State Fair</option>
+            <option value=3>Labor Day</option>
+            <option value=4>Martin Luther King Jr Day</option>
+        </select><br>
+
+        <label>temp:</label>
+        <input type="number" name="temp" required /><br>
+
+        <label>rain:</label>
+        <input type="number" min="0" max="1" name="rain" required /><br>
+
+        <label>snow:</label>
+        <input type="number" min="0" max="1" name="snow" required /><br>
+
+        <label for="weather">weather:</label>
+        <select id="weather" name="weather">
+            <option value=6>Clear</option>
+            <option value=1>Clouds</option>
+            <option value=5>Mist</option>
+            <option value=4>Haze</option>
+            <option value=2>Fog</option>
+            <option value=10>Thunderstorm</option>
+            <option value=3>Snow</option>
+            <option value=9>Squall</option>
+            <option value=7>Smoke</option>
+        </select><br>
+
+        <label>year:</label>
+        <input type="number" min="2012" max="2022" name="year" required /><br>
+
+        <label>month:</label>
+        <input type="number" min="1" max="12" name="month" required /><br>
+
+        <label>day:</label>
+        <input type="number" min="1" max="31" name="day" required /><br>
+
+        <label>hours:</label>
+        <input type="number" min="0" max="24" name="hours" required /><br>
+
+        <label>minutes:</label>
+        <input type="number" min="0" max="60" name="minutes" required /><br>
+
+        <label>seconds:</label>
+        <input type="number" min="0" max="60" name="seconds" required /><br>
+
+        <button type="submit">Predict</button>
+    </form>
+</div>
+
+<script>
+function handlePredict(event) {
+    event.preventDefault();
+
+    const form = event.target;
+    const formData = new FormData(form);
+
+    // Simulate prediction (replace with real ML model later)
+    const mockPrediction = Math.floor(Math.random() * 5000) + 1000;
+
+    // Save to localStorage
+    localStorage.setItem("prediction", mockPrediction);
+
+    // Redirect
+    window.location.href = "result.html";
+}
+</script>
+
+</body>
+</html>
